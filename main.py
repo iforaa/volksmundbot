@@ -20,6 +20,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, Rege
                           ConversationHandler)
 import states
 import logging
+import constants
 from time import sleep
 
 # Enable logging
@@ -173,7 +174,7 @@ def error(bot, update, error):
 
 def main():
     # Create the Updater and pass it your bot's token.
-    updater = Updater("266718721:AAESiY-uBbJYoEpIOGrsQtiN4jK352LU9EA")
+    updater = Updater(constants.TELEGRAM_KEY)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher

@@ -4,27 +4,27 @@ import hashlib
 
 from random import randint
 
-NAMES = "_names"
-STATE = "_state"
-QUESTION = "_question"
-QUESTION_FOR_RATE = "_question_for_rate"
-ANSWERS_FOR_RATE = "_answers_for_rate_2"
-CURRENT_ANSWER = "_current_answer"
-QUESTION_NUM = "_question_num"
-ANSWERS = "_ANSWERS"
-RATED_QUESTION = "_rated_question"
+NAMES = "_names_volksmundbot"
+STATE = "_state_volksmundbot"
+QUESTION = "_question_volksmundbot"
+QUESTION_FOR_RATE = "_question_for_rate_volksmundbot"
+ANSWERS_FOR_RATE = "_answers_for_rate_2_volksmundbot"
+CURRENT_ANSWER = "_current_answer_volksmundbot"
+QUESTION_NUM = "_question_num_volksmundbot"
+ANSWERS = "_ANSWERS_volksmundbot"
+RATED_QUESTION = "_rated_question_volksmundbot"
 
-ANSW_OPTION_1 = "_answ_option_1"
-ANSW_OPTION_2 = "_answ_option_2"
-ANSW_OPTION_3 = "_answ_option_3"
-ANSW_OPTION_4 = "_answ_option_4"
+ANSW_OPTION_1 = "_answ_option_1_volksmundbot"
+ANSW_OPTION_2 = "_answ_option_2_volksmundbot"
+ANSW_OPTION_3 = "_answ_option_3_volksmundbot"
+ANSW_OPTION_4 = "_answ_option_4_volksmundbot"
 
-RATE = "_rate"
+RATE = "_rate_volksmundbot"
 
 
-SOSS = "_soss"
-ADVICES = "_advices"
-SCHEDULE = "_schedule"
+SOSS = "_soss_volksmundbot"
+ADVICES = "_advices_volksmundbot"
+SCHEDULE = "_schedule_volksmundbot"
 
 red = redis.StrictRedis(host='localhost', port=6379, db=1)
 
