@@ -33,12 +33,12 @@ AW_COMMAND, AW_POLL_QUESTION, AW_POLL_ANSWER, AW_CHOOSING_RATE, AW_RATE_NEXT_OR_
 
 RP_COMMAND_CREATE = "Create Poll"
 RP_COMMAND_RATE = "Rate"
-RP_COMMAND_RANKING = "Ranking"
 RP_COMMANT_BACK = "Back"
 RP_COMMAND_NEXT_WORD = "Next Word"
+RP_WELCOME = "Welcome! I'm Volksmund Bot. Let's be creative and find new german words for anglicisms. What do you want to do?"
+"Let's start a new open case. Send me word you want to change"
 
-
-reply_keyboard = [[RP_COMMAND_CREATE, RP_COMMAND_RATE], [RP_COMMAND_RANKING],
+reply_keyboard = [[RP_COMMAND_CREATE, RP_COMMAND_RATE],
                   ["Done"]]
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
 rate_reply_keyboard = [["1", "2", "3"],["4", "5"],['Done']]
@@ -91,12 +91,12 @@ def receiver(bot, update):
                 sleep(1)
                 update.message.reply_text("Variant: " + states.get_random_answer(chat_id))
 
-        elif text == RP_COMMAND_RANKING:
-            states.set_state(chat_id, AW_RANKING)
-            ranking_keyboard = [[RP_COMMANT_BACK]]
-            ranking_markup = ReplyKeyboardMarkup(ranking_keyboard, one_time_keyboard=True)
-            update.message.reply_text(states.prepare_ranking(),
-                              reply_markup=ranking_markup)
+        # elif text == RP_COMMAND_RANKING:
+        #     states.set_state(chat_id, AW_RANKING)
+        #     ranking_keyboard = [[RP_COMMANT_BACK]]
+        #     ranking_markup = ReplyKeyboardMarkup(ranking_keyboard, one_time_keyboard=True)
+        #     update.message.reply_text(states.prepare_ranking(),
+        #                       reply_markup=ranking_markup)
 
 
     elif chat_state == AW_POLL_QUESTION:
