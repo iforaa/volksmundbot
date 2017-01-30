@@ -103,13 +103,19 @@ def receiver(bot, update):
 
 
     elif chat_state == AW_POLL_QUESTION:
-        update.message.reply_text(
+        if text == RP_COMMANT_BACK:
+            update.message.reply_text(u"<<<",
+                reply_markup=markup)
+            states.set_state(chat_id, AW_COMMAND)
+        else:
+            update.message.reply_text(
             u"Please send me the print answer option")
-        states.set_question(chat_id, text)
-        states.set_state(chat_id, AW_POLL_ANSWER)
+            states.set_question(chat_id, text)
+            states.set_state(chat_id, AW_POLL_ANSWER)
+        
     elif chat_state == AW_POLL_ANSWER:
         if text == RP_COMMANT_BACK:
-            update.message.reply_text(u"",
+            update.message.reply_text(u"<<<",
                 reply_markup=markup)
             states.set_state(chat_id, AW_COMMAND)
         else:
