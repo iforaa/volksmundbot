@@ -73,8 +73,11 @@ def receiver(bot, update):
 
     if chat_state == AW_COMMAND:
         if text == RP_COMMAND_CREATE:
+            poll_keyboard = [[RP_COMMANT_BACK]]
+            poll_markup = ReplyKeyboardMarkup(poll_keyboard, one_time_keyboard=False)
             update.message.reply_text(
-                u"Let's start a new open case. Send me word you want to change")
+                u"Let's start a new open case. Send me word you want to change"),
+            reply_markup=poll_markup)
             states.set_state(chat_id, AW_POLL_QUESTION)
 
         elif text == RP_COMMAND_RATE:
@@ -105,15 +108,21 @@ def receiver(bot, update):
         states.set_question(chat_id, text)
         states.set_state(chat_id, AW_POLL_ANSWER)
     elif chat_state == AW_POLL_ANSWER:
-        states.add_answ_var(chat_id, text)
-
-        if states.get_answ_len(chat_id) < 4:
-            update.message.reply_text(
-                u"Please send me the print answer option")
-        else:
-            update.message.reply_text(u"Thank you!",
+        if text == RP_COMMANT_BACK:
+            update.message.reply_text(u"",
                 reply_markup=markup)
             states.set_state(chat_id, AW_COMMAND)
+        else:
+            states.add_answ_var(chat_id, text)
+
+            if states.get_answ_len(chat_id) < 4:
+                update.message.reply_text(
+                u"Please send me the print answer option")
+            else:
+                update.message.reply_text(u"Thank you!",
+                reply_markup=markup)
+                states.set_state(chat_id, AW_COMMAND)
+
     elif chat_state == AW_CHOOSING_RATE:
         if text.isdigit():
             states.add_rate(chat_id, text)
